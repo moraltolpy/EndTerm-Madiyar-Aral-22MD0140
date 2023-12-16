@@ -11,7 +11,7 @@ namespace EndTerm.Models
     public class UserDto
     {
         [Key]
-        public string Login { get; set; }
+        public string Login { get; set; } = null!;
         public string Password { get; set; }
     }
 }

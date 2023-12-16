@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -40,10 +41,11 @@ public class AuthController : ControllerBase
             return StatusCode(500, "Internal server error: " + ex.Message);
         }
 
-        user.Password = null;
+        user.Password = string.Empty;
 
         return Ok(user);
     }
+
 
     // POST: api/Auth/login
     [HttpPost("login")]

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using EndTerm.Models; 
+using EndTerm.Models;
+using Mapster;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -15,14 +16,14 @@ public class PostsController : ControllerBase
 
     // GET: api/Posts
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
+    public async Task<ActionResult<IEnumerable<PostDto>>> GetPosts()
     {
         return await _context.Posts.ToListAsync();
     }
 
     // GET: api/Posts/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<Post>> GetPost(int id)
+    public async Task<ActionResult<PostDto>> GetPost(int id)
     {
         var post = await _context.Posts.FindAsync(id);
 
@@ -36,23 +37,25 @@ public class PostsController : ControllerBase
 
     // POST: api/Posts
     [HttpPost]
-    public async Task<ActionResult<Post>> PostPost(Post post)
+    public async Task<ActionResult<Post>> PostPost(PostDto post)
     {
-        _context.Posts.Add(post);
+        var postDbo = post.Adapt<Post>();
+        _context.Posts.Add(postDbo);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetPost", new { id = post.Id }, post);
+        return CreatedAtAction("GetPost", new { id = postDbo.Id }, post);
     }
 
     // PUT: api/Posts/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutPost(int id, Post post)
+    public async Task<IActionResult> PutPost(int id, PostDto post)
     {
-        if (id != post.Id)
-        {
-            return BadRequest();
-        }
-
+        post.DateOfCreation= DateTime.UtcNow;
+        var postDbo = await _context.Posts.FindAsync(id);
+        if (postDbo == null)
+            return NotFound();
+        postDbo = post.Adapt<Post>();
+        postDbo.Id = id;
         _context.Entry(post).State = EntityState.Modified;
 
         try

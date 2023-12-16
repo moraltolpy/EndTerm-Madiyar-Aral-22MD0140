@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\git Repositories\\github\\EndTerm\\EndTerm.csproj": {}
+    "D:\\git Repositories\\github\\EndTerm-Madiyar-Aral-22MD0140\\EndTerm.csproj": {}
   },
   "projects": {
-    "D:\\git Repositories\\github\\EndTerm\\EndTerm.csproj": {
+    "D:\\git Repositories\\github\\EndTerm-Madiyar-Aral-22MD0140\\EndTerm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\git Repositories\\github\\EndTerm\\EndTerm.csproj",
+        "projectUniqueName": "D:\\git Repositories\\github\\EndTerm-Madiyar-Aral-22MD0140\\EndTerm.csproj",
         "projectName": "EndTerm",
-        "projectPath": "D:\\git Repositories\\github\\EndTerm\\EndTerm.csproj",
+        "projectPath": "D:\\git Repositories\\github\\EndTerm-Madiyar-Aral-22MD0140\\EndTerm.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\git Repositories\\github\\EndTerm\\obj\\",
+        "outputPath": "D:\\git Repositories\\github\\EndTerm-Madiyar-Aral-22MD0140\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -47,6 +47,10 @@
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.0.3, )"
+            },
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.4.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
